@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Seite nicht gefunden | Elzain Ali{% endblock %}
+{% block content %}
+<section class="page-hero" style="min-height:60vh; display:flex; align-items:center;">
+  <div class="container" style="text-align:center;">
+    <p class="eyebrow">FEHLER 404</p>
+    <h1 style="font-size:6rem; line-height:1; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">404</h1>
+    <h2 data-de="Seite nicht gefunden" data-ar="الصفحة غير موجودة">Seite nicht gefunden</h2>
+    <p style="color:var(--muted); margin:1rem 0 2rem;" data-de="Die angeforderte Seite existiert nicht." data-ar="الصفحة المطلوبة غير موجودة.">Die angeforderte Seite existiert nicht.</p>
+    <a href="{{ url_for('home') }}" class="btn btn-primary" data-de="← Zurück zur Startseite" data-ar="← العودة للرئيسية">← Zurück zur Startseite</a>
+  </div>
+</section>
+{% endblock %}

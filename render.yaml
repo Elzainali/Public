@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: elzain-ali-fahrdienst
+    env: python
+    region: frankfurt          # closest to Germany (DSGVO-friendly)
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true     # Render auto-generates a secure value
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
+        value: "0"
+    healthCheckPath: /

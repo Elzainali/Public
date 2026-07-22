@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Galerie | Elzain Ali{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow" data-de="GALERIE" data-ar="المعرض">GALERIE</p>
+    <h1 data-de="Einblicke in meine Arbeit" data-ar="نظرة على عملي">Einblicke in meine Arbeit</h1>
+    <p class="page-hero-sub" data-de="Spezialisierte Fahrdienste für Patienten und medizinische Versorgung – zum Anklicken für Vollansicht." data-ar="خدمات نقل متخصصة للمرضى والتوريد الطبي – انقر لعرض كامل.">Spezialisierte Fahrdienste – zum Anklicken für Vollansicht.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="gallery-grid-full">
+      {% for img in driver.gallery %}
+      <button class="gallery-item" data-modal-src="{{ url_for('static', filename='img/'+img.file) }}" data-anim="fade-up" aria-label="{{ img.alt }}">
+        <img src="{{ url_for('static', filename='img/'+img.file) }}" alt="{{ img.alt }}" loading="lazy" />
+        <div class="gallery-overlay">
+          <span>🔍</span>
+          <p>{{ img.alt }}</p>
+        </div>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Elzain Ali | Professioneller Fahrer – Patienten & Medizin{% endblock %}
+
+{% block content %}
+
+<!-- ══ HERO ══ -->
+<section id="hero" class="hero-section">
+  <div class="hero-inner container">
+
+    <div class="hero-text" data-anim="fade-up">
+      <p class="eyebrow" data-de="BEWERBUNG · PROFESSIONELLER FAHRER" data-ar="تقدم لوظيفة · سائق محترف">BEWERBUNG · PROFESSIONELLER FAHRER</p>
+      <h1 data-de="Elzain Ali" data-ar="إلزاين علي">Elzain Ali</h1>
+      <p class="job-title" data-de="Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten" data-ar="سائق متخصص في نقل المرضى وكبار السن والعينات الطبية">
+        Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten
+      </p>
+      <p class="hero-intro" data-de="Ich bringe Menschen nicht nur sicher von A nach B – ich trage Verantwortung für ihre Würde, ihr Wohlbefinden und ihr Vertrauen. Mit Einfühlungsvermögen, Sorgfalt und absoluter Zuverlässigkeit stehe ich täglich für die Menschen ein, die auf mich angewiesen sind." data-ar="أنا لا أنقل الناس فحسب — بل أتحمل مسؤولية كرامتهم وراحتهم وثقتهم. بتعاطف وعناية وموثوقية مطلقة، أكون في خدمة من يعتمد علي كل يوم.">
+        Ich bringe Menschen nicht nur sicher von A nach B – ich trage Verantwortung für ihre Würde, ihr Wohlbefinden und ihr Vertrauen. Mit Einfühlungsvermögen, Sorgfalt und absoluter Zuverlässigkeit stehe ich täglich für die Menschen ein, die auf mich angewiesen sind.
+      </p>
+      <ul class="hero-badges">
+        <li data-de="✔ Personenbeförderungsschein seit 11/2024" data-ar="✔ شهادة نقل الركاب منذ 11/2024">✔ Personenbeförderungsschein seit 11/2024</li>
+        <li data-de="✔ Führerschein Klasse B seit 2017" data-ar="✔ رخصة القيادة فئة B منذ 2017">✔ Führerschein Klasse B seit 2017</li>
+        <li data-de="✔ Deutsch B2 · Englisch B2 · Arabisch (Muttersprache)" data-ar="✔ ألماني B2 · إنجليزي B2 · عربي (اللغة الأم)">✔ Deutsch B2 · Englisch B2 · Arabisch (Muttersprache)</li>
+      </ul>
+      <div class="hero-cta">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary">
+          <span data-de="Jetzt anfragen →" data-ar="اطلب الآن →">Jetzt anfragen →</span>
+        </a>
+        <a href="{{ url_for('services') }}" class="btn btn-outline">
+          <span data-de="Leistungen ansehen" data-ar="عرض الخدمات">Leistungen ansehen</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo" data-anim="fade-right">
+      <button class="photo-ring" data-modal-src="{{ url_for('static', filename='img/Ali.jpg') }}" aria-label="Profilbild vergrößern">
+        <img src="{{ url_for('static', filename='img/Ali.jpg') }}" alt="Elzain Ali – Professioneller Fahrer" />
+        <span class="photo-hint" data-de="Vergrößern" data-ar="تكبير">Vergrößern</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SERVICES TEASER ══ -->
+<section id="services-teaser" class="section-alt">
+  <div class="container">
+    <span class="eyebrow center" data-de="MEINE LEISTUNGEN" data-ar="خدماتي">MEINE LEISTUNGEN</span>
+    <h2 class="section-title center" data-de="Zwei Kernbereiche – ein Anspruch" data-ar="مجالان أساسيان – معيار واحد">Zwei Kernbereiche – ein Anspruch</h2>
+    <p class="section-sub" data-de="Zuverlässigkeit, Würde und Sicherheit – in jedem Transport, für jeden Menschen." data-ar="الموثوقية والكرامة والسلامة — في كل رحلة ولكل شخص.">Zuverlässigkeit, Würde und Sicherheit – in jedem Transport, für jeden Menschen.</p>
+
+    <div class="services-cards">
+      {% for svc in services %}
+      <a href="{{ url_for('service_detail', service_id=svc.id) }}" class="svc-card" data-anim="fade-up">
+        <div class="svc-icon">{{ svc.icon }}</div>
+        <h3 data-de="{{ svc.title_de }}" data-ar="{{ svc.title_ar }}">{{ svc.title_de }}</h3>
+        <p data-de="{{ svc.desc_de[:120] }}…" data-ar="{{ svc.desc_ar[:120] }}…">{{ svc.desc_de[:120] }}…</p>
+        <span class="svc-link" data-de="Mehr erfahren →" data-ar="اعرف المزيد →">Mehr erfahren →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══ STRENGTHS STRIP ══ -->
+<section id="strengths">
+  <div class="container">
+    <span class="eyebrow center" data-de="WARUM ICH?" data-ar="لماذا أنا؟">WARUM ICH?</span>
+    <h2 class="section-title center" data-de="Was mich auszeichnet" data-ar="ما يميزني">Was mich auszeichnet</h2>
+    <div class="strengths-grid">
+      {% set cards = [
+        ("❤️","Einfühlsamkeit","التعاطف","Ich begegne jedem Patienten mit echtem Respekt und Herzlichkeit.","أتعامل مع كل مريض باحترام وصدق حقيقي."),
+        ("⏱️","Pünktlichkeit","الالتزام","Im medizinischen Umfeld ist Zeit keine Komfort, sondern Notwendigkeit.","في البيئة الطبية، الوقت ضرورة لا رفاهية."),
+        ("🛡️","Sicherheit","الأمان","Strikte Einhaltung aller Sicherheits- und Hygienevorschriften.","الالتزام الصارم بجميع معايير السلامة والنظافة."),
+        ("🗣️","Diskretion","السرية","Privatsphäre der Patienten ist für mich unverhandelbar.","خصوصية المرضى أمر غير قابل للتفاوض بالنسبة لي."),
+        ("🧠","Ruhe & Besonnenheit","الهدوء","Auch in schwierigen Situationen bleibe ich ruhig und handlungsfähig.","حتى في الحالات الصعبة أبقى هادئاً وقادراً على التصرف."),
+        ("🌍","Mehrsprachig","تعدد اللغات","Deutsch B2 · Englisch B2 · Arabisch – Muttersprache.","ألماني B2 · إنجليزي B2 · عربي – اللغة الأم."),
+      ] %}
+      {% for icon,de,ar,desc_de,desc_ar in cards %}
+      <div class="strength-card" data-anim="fade-up">
+        <div class="s-icon">{{ icon }}</div>
+        <h3 data-de="{{ de }}" data-ar="{{ ar }}">{{ de }}</h3>
+        <p data-de="{{ desc_de }}" data-ar="{{ desc_ar }}">{{ desc_de }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHOTO STRIP ══ -->
+<section id="photo-strip" class="section-alt">
+  <div class="container">
+    <span class="eyebrow center" data-de="GALERIE" data-ar="المعرض">GALERIE</span>
+    <h2 class="section-title center" data-de="Einblicke in meine Arbeit" data-ar="نظرة على عملي">Einblicke in meine Arbeit</h2>
+    <div class="gallery-strip">
+      {% for img in driver.gallery[:6] %}
+      <button class="gallery-thumb" data-modal-src="{{ url_for('static', filename='img/'+img.file) }}" aria-label="{{ img.alt }}">
+        <img src="{{ url_for('static', filename='img/'+img.file) }}" alt="{{ img.alt }}" loading="lazy" />
+      </button>
+      {% endfor %}
+    </div>
+    <div class="center-btn">
+      <a href="{{ url_for('gallery') }}" class="btn btn-outline" data-de="Alle Fotos ansehen →" data-ar="عرض جميع الصور →">Alle Fotos ansehen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<section id="cta-band" class="cta-band">
+  <div class="container">
+    <h2 data-de="Bereit für eine Zusammenarbeit?" data-ar="جاهز للتعاون؟">Bereit für eine Zusammenarbeit?</h2>
+    <p data-de="Ich freue mich auf Ihre Anfrage und melde mich schnell zurück." data-ar="أتطلع إلى استفساركم وسأرد بسرعة.">Ich freue mich auf Ihre Anfrage und melde mich schnell zurück.</p>
+    <div class="cta-btns">
+      <a href="{{ driver.phone_href }}" class="btn btn-primary">
+        📞 <span dir="ltr">0177&thinsp;183&thinsp;26&thinsp;62</span>
+      </a>
+      <a href="{{ url_for('contact') }}" class="btn btn-outline" data-de="Kontaktformular" data-ar="نموذج التواصل">Kontaktformular</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

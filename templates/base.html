@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Elzain Ali – Spezialisierter Fahrer für Patienten, Senioren und medizinische Versorgungsfahrten. Celle, Niedersachsen." />
+  <meta name="robots" content="index, follow" />
+  <title>{% block title %}Elzain Ali | Medizinischer Fahrdienst{% endblock %}</title>
+  <!-- DSGVO: no external fonts, no CDNs -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header id="site-header">
+  <div class="header-inner">
+
+    <a href="{{ url_for('home') }}" class="logo-link" aria-label="Startseite">
+      <img src="{{ url_for('static', filename='img/' + driver.logo) }}"
+           alt="Elzain Ali Logo" class="logo-img" />
+      <span class="logo-text">Elzain<span class="dot">.</span>Ali</span>
+    </a>
+
+    <nav id="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="{{ url_for('home') }}"     data-de="Home"        data-ar="الرئيسية"  {% if request.endpoint=='home'     %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ url_for('about') }}"    data-de="Über mich"   data-ar="عن نفسي"  {% if request.endpoint=='about'    %}class="active"{% endif %}>Über mich</a></li>
+        <li><a href="{{ url_for('services') }}" data-de="Leistungen"  data-ar="الخدمات"  {% if request.endpoint in('services','service_detail') %}class="active"{% endif %}>Leistungen</a></li>
+        <li><a href="{{ url_for('gallery') }}"  data-de="Galerie"     data-ar="المعرض"   {% if request.endpoint=='gallery'  %}class="active"{% endif %}>Galerie</a></li>
+        <li><a href="{{ url_for('contact') }}"  data-de="Kontakt"     data-ar="التواصل"  {% if request.endpoint=='contact'  %}class="active"{% endif %}>Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-controls">
+      <a href="{{ url_for('contact') }}" class="btn btn-cta" data-de="Jetzt anfragen" data-ar="اطلب الآن">Jetzt anfragen</a>
+      <button id="lang-toggle" class="lang-btn" aria-label="Sprache wechseln">
+        <span class="l-de active-lang">DE</span><span class="sep">/</span><span class="l-ar">ع</span>
+      </button>
+      <button id="burger" class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="ticker-wrap" aria-label="Laufschrift">
+  <div class="ticker-track">
+    <span data-de="🚑 Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten &nbsp;|&nbsp; 💊 Transport medizinischer Proben &amp; Apothekenmedikamente &nbsp;|&nbsp; ✔ Personenbeförderungsschein seit 11/2024 &nbsp;|&nbsp; 📞 0177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;"
+          data-ar="🚑 سائق متخصص في نقل المرضى وكبار السن والعينات الطبية &nbsp;|&nbsp; 💊 نقل الأدوية والعينات من المعامل والصيدليات &nbsp;|&nbsp; ✔ شهادة نقل الركاب منذ 11/2024 &nbsp;|&nbsp; 📞 +49&thinsp;177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;">
+      🚑 Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten &nbsp;|&nbsp; 💊 Transport medizinischer Proben &amp; Apothekenmedikamente &nbsp;|&nbsp; ✔ Personenbeförderungsschein seit 11/2024 &nbsp;|&nbsp; 📞 0177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;
+    </span>
+    <!-- duplicate for seamless loop -->
+    <span aria-hidden="true"
+          data-de="🚑 Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten &nbsp;|&nbsp; 💊 Transport medizinischer Proben &amp; Apothekenmedikamente &nbsp;|&nbsp; ✔ Personenbeförderungsschein seit 11/2024 &nbsp;|&nbsp; 📞 0177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;"
+          data-ar="🚑 سائق متخصص في نقل المرضى وكبار السن والعينات الطبية &nbsp;|&nbsp; 💊 نقل الأدوية والعينات من المعامل والصيدليات &nbsp;|&nbsp; ✔ شهادة نقل الركاب منذ 11/2024 &nbsp;|&nbsp; 📞 +49&thinsp;177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;">
+      🚑 Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten &nbsp;|&nbsp; 💊 Transport medizinischer Proben &amp; Apothekenmedikamente &nbsp;|&nbsp; ✔ Personenbeförderungsschein seit 11/2024 &nbsp;|&nbsp; 📞 0177&thinsp;183&thinsp;26&thinsp;62 &nbsp;|&nbsp;
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<main id="main-content">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-name">Elzain Ali</span>
+      <span class="footer-tagline" data-de="Spezialisierter Fahrer · Patienten & Medizin" data-ar="سائق متخصص · المرضى والطب">Spezialisierter Fahrer · Patienten & Medizin</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer-Navigation">
+      <a href="{{ url_for('home') }}"      data-de="Home"     data-ar="الرئيسية">Home</a>
+      <a href="{{ url_for('services') }}"  data-de="Leistungen" data-ar="الخدمات">Leistungen</a>
+      <a href="{{ url_for('contact') }}"   data-de="Kontakt"  data-ar="التواصل">Kontakt</a>
+      <a href="{{ url_for('impressum') }}" data-de="Impressum" data-ar="بيان قانوني">Impressum</a>
+      <a href="{{ url_for('datenschutz') }}" data-de="Datenschutz" data-ar="الخصوصية">Datenschutz</a>
+    </nav>
+    <p class="footer-copy" data-de="© 2026 Elzain Ali · Alle Rechte vorbehalten" data-ar="© 2026 إلزاين علي · جميع الحقوق محفوظة">
+      © 2026 Elzain Ali · Alle Rechte vorbehalten
+    </p>
+  </div>
+</footer>
+
+<!-- Photo modal (used on multiple pages) -->
+<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Vollansicht" hidden>
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Schließen">&times;</button>
+    <img id="modal-img" src="" alt="" />
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% block scripts_extra %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Über mich | Elzain Ali{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow" data-de="MEIN PROFIL" data-ar="ملفي الشخصي">MEIN PROFIL</p>
+    <h1 data-de="Über mich" data-ar="عن نفسي">Über mich</h1>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-photo" data-anim="fade-right">
+        <button class="photo-ring large" data-modal-src="{{ url_for('static', filename='img/Ali.jpg') }}" aria-label="Profilbild vergrößern">
+          <img src="{{ url_for('static', filename='img/Ali.jpg') }}" alt="Elzain Ali" />
+          <span class="photo-hint" data-de="Vergrößern" data-ar="تكبير">Vergrößern</span>
+        </button>
+      </div>
+
+      <div class="about-text" data-anim="fade-up">
+        <h2 data-de="Elzain Ali" data-ar="إلزاين علي">Elzain Ali</h2>
+        <p class="job-title" data-de="Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten" data-ar="سائق متخصص في نقل المرضى وكبار السن والعينات الطبية">Spezialisierter Fahrer für Patienten, Senioren &amp; medizinische Versorgungsfahrten</p>
+
+        <p data-de="Seit meiner Einreise nach Deutschland 2016 habe ich mich Schritt für Schritt in den deutschen Arbeitsmarkt eingearbeitet. Vom Integrationskurs über den B2-Sprachkurs bis hin zu mehreren Stationen im Fahr- und Lieferdienst – ich habe immer darauf hingearbeitet, zuverlässige und sinnstiftende Arbeit zu leisten." data-ar="منذ قدومي إلى ألمانيا عام 2016، خطوة بخطوة دمجت نفسي في سوق العمل الألماني. من دورة الاندماج إلى دورة اللغة B2 ثم محطات عديدة في خدمات القيادة والتوصيل — عملت دائماً على تقديم عمل موثوق وذو معنى.">
+          Seit meiner Einreise nach Deutschland 2016 habe ich mich Schritt für Schritt in den deutschen Arbeitsmarkt eingearbeitet. Vom Integrationskurs über den B2-Sprachkurs bis hin zu mehreren Stationen im Fahr- und Lieferdienst – ich habe immer darauf hingearbeitet, zuverlässige und sinnstiftende Arbeit zu leisten.
+        </p>
+        <p data-de="Mein Studium der Informatik in Khartoum hat mir ein ausgeprägtes technisches Verständnis vermittelt, das mir heute beim Umgang mit Dispositionssoftware, digitalen Fahrtenbüchern und Navigationstools zugute kommt." data-ar="دراستي للمعلوماتية في الخرطوم أعطتني فهماً تقنياً عميقاً يفيدني اليوم في التعامل مع برامج التوزيع ودفاتر القيادة الرقمية وأدوات الملاحة.">
+          Mein Studium der Informatik in Khartoum hat mir ein ausgeprägtes technisches Verständnis vermittelt, das mir heute beim Umgang mit Dispositionssoftware, digitalen Fahrtenbüchern und Navigationstools zugute kommt.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label" data-de="Telefon" data-ar="الهاتف">Telefon</span>
+            <a href="{{ driver.phone_href }}" class="phone-val" dir="ltr">0177&thinsp;183&thinsp;26&thinsp;62</a>
+          </div>
+          <div class="info-item">
+            <span class="info-label" data-de="E-Mail" data-ar="البريد">E-Mail</span>
+            <a href="mailto:{{ driver.email }}">{{ driver.email }}</a>
+          </div>
+          <div class="info-item">
+            <span class="info-label" data-de="Standort" data-ar="الموقع">Standort</span>
+            <span data-de="{{ driver.location }}" data-ar="أهنسبيك، 29353 تسيله، نيدرزاكسن">{{ driver.location }}</span>
+          </div>
+        </div>
+
+        <div class="cta-btns">
+          <a href="{{ driver.phone_href }}" class="btn btn-primary">📞 <span dir="ltr">0177&thinsp;183&thinsp;26&thinsp;62</span></a>
+          <a href="{{ url_for('contact') }}" class="btn btn-outline" data-de="Schreiben Sie mir" data-ar="راسلني">Schreiben Sie mir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Qualifications -->
+<section class="section-alt">
+  <div class="container">
+    <span class="eyebrow center" data-de="QUALIFIKATIONEN" data-ar="المؤهلات">QUALIFIKATIONEN</span>
+    <h2 class="section-title center" data-de="Lizenzen &amp; Erfahrung" data-ar="الرخص والخبرة">Lizenzen &amp; Erfahrung</h2>
+
+    <div class="expertise-cols">
+      <div class="expertise-block" data-anim="fade-up">
+        <h3 data-de="📋 Lizenzen" data-ar="📋 الرخص">📋 Lizenzen</h3>
+        <ul>
+          {% for lic in driver.licenses %}
+          <li>{{ lic }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="expertise-block" data-anim="fade-up">
+        <h3 data-de="🌍 Sprachen" data-ar="🌍 اللغات">🌍 Sprachen</h3>
+        <ul>
+          {% for lang in driver.languages %}
+          <li>{{ lang }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="expertise-block" data-anim="fade-up">
+        <h3 data-de="🎓 Bildung" data-ar="🎓 التعليم">🎓 Bildung</h3>
+        <ul>
+          <li data-de="Informatikstudium – Khartoum (Sudan)" data-ar="دراسة معلوماتية – الخرطوم (السودان)">Informatikstudium – Khartoum (Sudan)</li>
+          <li data-de="Integrationskurs + B2-Sprachkurs in Deutschland" data-ar="دورة اندماج + دورة لغة B2 في ألمانيا">Integrationskurs + B2-Sprachkurs in Deutschland</li>
+        </ul>
+      </div>
+      <div class="expertise-block" data-anim="fade-up">
+        <h3 data-de="💼 Berufspraxis" data-ar="💼 الخبرة العملية">💼 Berufspraxis</h3>
+        <ul>
+          <li data-de="Patiententransport 08–11/2025" data-ar="نقل المرضى 08–11/2025">Patiententransport 08–11/2025</li>
+          <li data-de="Auslieferungsfahrer 2024–2025" data-ar="سائق توصيل 2024–2025">Auslieferungsfahrer 2024–2025</li>
+          <li data-de="Uber/Taxi 03–04/2024" data-ar="أوبر/تاكسي 03–04/2024">Uber/Taxi 03–04/2024</li>
+          <li data-de="Lagerhelfer Rossmann 2022" data-ar="مساعد مستودع روسمان 2022">Lagerhelfer Rossmann 2022</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

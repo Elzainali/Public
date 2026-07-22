@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Impressum | Elzain Ali{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1>Impressum</h1>
+  </div>
+</section>
+<section>
+  <div class="container legal-box">
+    <h2>Angaben gemäß § 5 TMG / § 2 DDG</h2>
+    <p><strong>Elzain Ali</strong><br />
+    Königsberger Str. 6<br />
+    29353 Ahnsbeck<br />
+    Deutschland</p>
+
+    <h2>Kontakt</h2>
+    <p>Telefon: <a href="tel:+491771832662" dir="ltr">0177&thinsp;183&thinsp;26&thinsp;62</a><br />
+    E-Mail: <a href="mailto:zainetsoftg@gmail.com">zainetsoftg@gmail.com</a></p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>Elzain Ali, Königsberger Str. 6, 29353 Ahnsbeck</p>
+
+    <h2>Haftungsausschluss</h2>
+    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.</p>
+
+    <a href="{{ url_for('home') }}" class="back-link" data-de="← Zurück zur Startseite" data-ar="← العودة للرئيسية">← Zurück zur Startseite</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Kontakt | Elzain Ali{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow" data-de="KONTAKT" data-ar="التواصل">KONTAKT</p>
+    <h1 data-de="Sprechen Sie mich an" data-ar="تواصل معي">Sprechen Sie mich an</h1>
+    <p class="page-hero-sub" data-de="Ich freue mich auf Ihre Anfrage und melde mich prompt zurück." data-ar="أتطلع إلى استفساركم وسأرد بأسرع وقت.">Ich freue mich auf Ihre Anfrage und melde mich prompt zurück.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <!-- Info -->
+      <div class="contact-info" data-anim="fade-up">
+
+        <div class="cinfo-item">
+          <div class="cinfo-icon">📞</div>
+          <div>
+            <p class="cinfo-label" data-de="Telefon (Click-to-Call)" data-ar="الهاتف (اضغط للاتصال)">Telefon (Click-to-Call)</p>
+            <p class="phone-display" dir="ltr">0177&thinsp;183&thinsp;26&thinsp;62</p>
+            <a href="tel:+491771832662" class="btn btn-primary btn-sm">
+              📞 <span data-de="Jetzt anrufen" data-ar="اتصل الآن">Jetzt anrufen</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cinfo-item">
+          <div class="cinfo-icon">✉️</div>
+          <div>
+            <p class="cinfo-label" data-de="E-Mail" data-ar="البريد الإلكتروني">E-Mail</p>
+            <p>zainetsoftg@gmail.com</p>
+            <a href="mailto:zainetsoftg@gmail.com" class="btn btn-outline btn-sm">
+              ✉️ <span data-de="E-Mail senden" data-ar="إرسال بريد">E-Mail senden</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cinfo-item">
+          <div class="cinfo-icon">📍</div>
+          <div>
+            <p class="cinfo-label" data-de="Standort" data-ar="الموقع">Standort</p>
+            <p data-de="Ahnsbeck · 29353 Celle · Niedersachsen" data-ar="أهنسبيك · 29353 تسيله · نيدرزاكسن">Ahnsbeck · 29353 Celle · Niedersachsen</p>
+          </div>
+        </div>
+
+        <div class="cinfo-item">
+          <div class="cinfo-icon">🕐</div>
+          <div>
+            <p class="cinfo-label" data-de="Verfügbarkeit" data-ar="التوفر">Verfügbarkeit</p>
+            <p data-de="Flexibel – auch früh morgens und abends" data-ar="مرن — بما في ذلك الصباح الباكر والمساء">Flexibel – auch früh morgens und abends</p>
+          </div>
+        </div>
+
+        <div class="driver-card compact" data-anim="fade-up" style="margin-top:1.5rem">
+          <button class="photo-ring" data-modal-src="{{ url_for('static', filename='img/Ali.jpg') }}" aria-label="Profilbild vergrößern">
+            <img src="{{ url_for('static', filename='img/Ali.jpg') }}" alt="Elzain Ali" />
+            <span class="photo-hint" data-de="Vergrößern" data-ar="تكبير">Vergrößern</span>
+          </button>
+          <p class="driver-name">Elzain Ali</p>
+          <p class="driver-role" data-de="Ihr persönlicher Ansprechpartner" data-ar="جهة التواصل الشخصية">Ihr persönlicher Ansprechpartner</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="contact-form" id="contact-form" data-anim="fade-up" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label for="f-name" data-de="Ihr Name *" data-ar="اسمك *">Ihr Name *</label>
+            <input id="f-name" type="text" placeholder="Max Mustermann" required />
+          </div>
+          <div class="fg">
+            <label for="f-email" data-de="E-Mail *" data-ar="البريد *">E-Mail *</label>
+            <input id="f-email" type="email" placeholder="anfrage@firma.de" required />
+          </div>
+        </div>
+        <div class="fg">
+          <label for="f-company" data-de="Unternehmen / Einrichtung" data-ar="الشركة / المنشأة">Unternehmen / Einrichtung</label>
+          <input id="f-company" type="text" placeholder="Klinikum GmbH" />
+        </div>
+        <div class="fg">
+          <label for="f-service" data-de="Gewünschte Leistung" data-ar="الخدمة المطلوبة">Gewünschte Leistung</label>
+          <select id="f-service">
+            <option value="" data-de="Bitte wählen …" data-ar="اختر …">Bitte wählen …</option>
+            <option value="patient-transport" data-de="Patienten- & Seniorentransport" data-ar="نقل المرضى وكبار السن">Patienten- & Seniorentransport</option>
+            <option value="medical-supply" data-de="Medizinische Proben & Apothekenlieferung" data-ar="نقل الأدوية والعينات">Medizinische Proben & Apothekenlieferung</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="f-msg" data-de="Ihre Nachricht *" data-ar="رسالتك *">Ihre Nachricht *</label>
+          <textarea id="f-msg" rows="5" placeholder="Beschreiben Sie Ihre Anfrage …" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          <span data-de="Nachricht absenden →" data-ar="إرسال الرسالة →">Nachricht absenden →</span>
+        </button>
+        <p class="form-note" data-de="* Pflichtfelder. Öffnet Ihr Standard-E-Mail-Programm. Keine Datenspeicherung auf dem Server." data-ar="* حقول إلزامية. يفتح برنامج البريد الافتراضي. لا يُحفظ بيانات على الخادم.">* Pflichtfelder. Öffnet Ihr Standard-E-Mail-Programm. Keine Datenspeicherung auf dem Server.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
